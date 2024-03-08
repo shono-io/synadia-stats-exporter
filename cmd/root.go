@@ -23,7 +23,7 @@ var rootCmd = &cobra.Command{
 	Use:   "synadia-stats-exporter",
 	Short: "Export Synadia NATS stats to prometheus",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		nc, err := nats.Connect(natsURL, nats.UserInfo(userJwt, userSeed))
+		nc, err := nats.Connect(natsURL, nats.UserJWTAndSeed(userJwt, userSeed))
 		if err != nil {
 			return err
 		}
