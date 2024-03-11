@@ -19,7 +19,7 @@ RUN go build -o snex
 FROM gcr.io/distroless/static-debian11
 
 COPY --from=build /go/src/snex/snex .
-USER snex:snex
+USER snex
 LABEL maintainer="Daan Gerits <daan@shono.io>"
 
 ENTRYPOINT ["/snex"]
