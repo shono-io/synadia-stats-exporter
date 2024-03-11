@@ -5,14 +5,13 @@ ENV GOOS=linux
 RUN useradd -u 10001 snex
 
 WORKDIR /go/src/snex
+
 # Update dependencies: On unchanged dependencies, cached layer will be reused
-COPY go.mod /go/src/snex
+COPY go.* ./
 RUN go mod tidy
 
 # Build
-COPY main.go /go/src/snex/
-COPY cmd /go/src/snex/
-COPY pkg /go/src/snex/
+COPY . ./
 
 RUN go build -o snex
 
